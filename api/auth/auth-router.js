@@ -18,7 +18,7 @@ router.post("/register", (req, res) => {
     credentials.password = hash;
 
     // save the user to the database
-    Users.add(credentials)
+    Users.insert(credentials)
       .then(user => {
         res.status(201).json({ data: user });
       })
@@ -60,7 +60,6 @@ router.post("/login", (req, res) => {
 });
 
 function makeToken(user) {
-  // we use a lib called jsonwebtoken
   const payload = {
     subject: user.id,
     username: user.username,
