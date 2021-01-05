@@ -24,12 +24,12 @@ exports.up = function (knex) {
     })
     .createTable("admins", (tbl) => {
       tbl.increments();
-      tbl.string("school-district", 128);
-      tbl.string("school-name", 128);
+      tbl.string("school_district", 128);
+      tbl.string("school_name", 128);
       tbl.string("state", 128);
       tbl.string("country", 128);
       tbl
-        .integer("user-id")
+        .integer("user_id")
         .unsigned()
         .references("id")
         .inTable("users")
@@ -38,15 +38,15 @@ exports.up = function (knex) {
     })
     .createTable("mentors", (tbl) => {
       tbl.increments();
-      tbl.string("first-name", 128).notNullable();
-      tbl.string("last-name", 128).notNullable();
+      tbl.string("first_name", 128).notNullable();
+      tbl.string("last_name", 128).notNullable();
       tbl.string("interests");
       tbl.string("career");
       tbl.string("state", 128);
       tbl.string("country", 128);
-      tbl.string("preferred-times");
+      tbl.string("preferred_times");
       tbl
-        .integer("user-id")
+        .integer("user_id")
         .unsigned()
         .references("id")
         .inTable("users")
@@ -62,15 +62,15 @@ exports.up = function (knex) {
     })
     .createTable("students", (tbl) => {
       tbl.increments();
-      tbl.string("first-name", 128).notNullable();
-      tbl.string("last-name", 128).notNullable();
+      tbl.string("first_name", 128).notNullable();
+      tbl.string("last_name", 128).notNullable();
       tbl.string("interests");
-      tbl.string("career-goals");
+      tbl.string("career_goals");
       tbl.string("state", 128);
       tbl.string("country", 128);
-      tbl.string("preferred-times");
+      tbl.string("preferred_times");
       tbl
-        .integer("user-id")
+        .integer("user_id")
         .unsigned()
         .references("id")
         .inTable("users")
