@@ -1,5 +1,6 @@
 const router = require('express').Router();
-const Task = require('./tasks-model');
+const Task = require('./../tasks/tasks-model');
+const Student= require('./students-model');
 
 router.get("/", (req, res) => {
   Task.get()
@@ -10,6 +11,5 @@ router.get("/", (req, res) => {
       console.log
     })
 })
-
 
 module.exports = router;

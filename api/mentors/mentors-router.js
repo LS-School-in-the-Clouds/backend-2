@@ -1,5 +1,6 @@
 const router = require('express').Router();
-const Task = require('./tasks-model');
+const Task = require('./../tasks/tasks-model');
+const Mentor = require('./mentors-model');
 
 router.get("/", (req, res) => {
   Task.get()
