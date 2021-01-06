@@ -91,14 +91,14 @@ exports.up = function (knex) {
       tbl.string("date");
       tbl.boolean("completed").defaultTo("false");
       tbl
-        .integer("assinged_by")
+        .integer("assigned_by")
         .unsigned()
         .references("id")
         .inTable("users")
         .onDelete("CASCADE")
         .onUpdate("CASCADE");
       tbl
-        .integer("assinged_to")
+        .integer("assigned_to")
         .unsigned()
         .references("id")
         .inTable("users")
