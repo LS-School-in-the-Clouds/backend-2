@@ -44,6 +44,7 @@ router.post("/login", (req, res) => {
           res.status(200).json({
             message: "Welcome to our API, " + user.username,
             user_id: user.id,
+            role: user.role,
             token
           });
         } else {
