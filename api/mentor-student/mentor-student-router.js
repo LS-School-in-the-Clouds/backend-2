@@ -2,11 +2,11 @@ const router = require('express').Router();
 const MS = require('./mentor-student-model');
 const User = require('./../users/users-model');
 
-// middleware 
+// middleware
 const validateStudentId = async (req, res, next) => {
   try {
     const student = await User.getById(req.body.student_id)
-    if(!student) { 
+    if(!student) {
       res.status(404).json({ message: "Invalid student ID "})
     } else if (student.role != 3) {
       res.status(400).json({ message: "User is not a student "})
@@ -18,10 +18,10 @@ const validateStudentId = async (req, res, next) => {
   }
 }
 
-const validatementortId = async (req, res, next) => {
+const validateMentortId = async (req, res, next) => {
   try {
     const mentor = await User.getById(req.body.mentor_id)
-    if(!mentor) { 
+    if(!mentor) {
       res.status(404).json({ message: "Invalid mentor ID "})
     } else if (mentor.role != 2) {
       res.status(400).json({ message: "User is not a mentor "})
@@ -29,7 +29,7 @@ const validatementortId = async (req, res, next) => {
       next();
     }
   } catch (error) {
-    res.status(500).json({ message: "Error checking mentorby Id "})
+    res.status(500).json({ message: "Error checking mentor by Id "})
   }
 }
 
@@ -57,7 +57,7 @@ router.get("/:id/mentors", (req, res) => {
     })
 })
 
-router.post('/', validateStudentId, validatementortId, (req, res) => {
+router.post('/', validateStudentId, validateMentortId, (req, res) => {
   MS.insert(req.body)
     .then((connection) => {
       res.status(201).json(connection)
@@ -75,7 +75,7 @@ router.delete('/:id', (req, res) => {
     })
     .catch(e => {
       console.log(e)
-      res.status(500).json({ message: "Server error deleting mentor student pair "})
+      res.status(500).json({ message: "Server error deleting mentor student pair" })
     })
 })
 
