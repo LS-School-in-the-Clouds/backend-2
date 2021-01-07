@@ -84,14 +84,84 @@ exports.up = function (knex) {
         .onDelete("RESTRICT")
         .onUpdate("RESTRICT");
     })
+    .createTable("tasks", (tbl) => {
+      tbl.increments();
+      tbl.string("description").notNullable();
+      tbl.string("type");
+      tbl.string("date");
+      tbl.boolean("completed").defaultTo("false");
+      tbl
+        .integer("assigned_by")
+        .unsigned()
+        .references("id")
+        .inTable("users")
+        .onDelete("CASCADE")
+        .onUpdate("CASCADE");
+      tbl
+        .integer("assigned_to")
+        .unsigned()
+        .references("id")
+        .inTable("users")
+        .onDelete("CASCADE")
+        .onUpdate("CASCADE");
+    })
+    .createTable("steps", (tbl) => {
+      tbl.increments();
+      tbl.integer("step_num").unsigned();
+      tbl
+        .integer("task_id")
+        .unsigned()
+        .references("id")
+        .inTable("tasks")
+        .onDelete("CASCADE")
+        .onUpdate("CASCADE");
+    })
+    .createTable("mentor_to_student", (tbl) => {
+      tbl.increments();
+      tbl
+        .integer("mentor")
+        .unsigned()
+        .references("id")
+        .inTable("users")
+        .onDelete("CASCADE")
+        .onUpdate("CASCADE");
+      tbl
+        .integer("student")
+        .unsigned()
+        .references("id")
+        .inTable("users")
+        .onDelete("CASCADE")
+        .onUpdate("CASCADE");
+    })
+    .createTable("admin_to_mentor", (tbl) => {
+      tbl.increments();
+      tbl
+        .integer("mentor")
+        .unsigned()
+        .references("id")
+        .inTable("users")
+        .onDelete("CASCADE")
+        .onUpdate("CASCADE");
+      tbl
+        .integer("student")
+        .unsigned()
+        .references("id")
+        .inTable("users")
+        .onDelete("CASCADE")
+        .onUpdate("CASCADE");
+    });
 };
 
 exports.down = function (knex) {
   return knex.schema
+    .dropTableIfExists("admin_to_mentor")
+    .dropTableIfExists("mentor_to_student")
+    .dropTableIfExists("steps")
+    .dropTableIfExists("tasks")
     .dropTableIfExists("students")
     .dropTableIfExists("mentors")
     .dropTableIfExists("admins")
     .dropTableIfExists("users")
     .dropTableIfExists("timezones")
-    .dropTableIfExists("roles")
+    .dropTableIfExists("roles");
 };
