@@ -108,7 +108,7 @@ exports.up = function (knex) {
     .createTable("steps", (tbl) => {
       tbl.increments();
       tbl.integer("step_num").unsigned().notNullable();
-      tbl.string("description").notnullable();
+      tbl.string("description").notNullable();
       tbl
         .integer("task_id")
         .unsigned()
