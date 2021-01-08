@@ -28,6 +28,7 @@ exports.up = function (knex) {
       tbl.string("school_name", 128);
       tbl.string("state", 128);
       tbl.string("country", 128);
+      tbl.string("img_url");
       tbl
         .integer("user_id")
         .unsigned()
@@ -45,6 +46,7 @@ exports.up = function (knex) {
       tbl.string("state", 128);
       tbl.string("country", 128);
       tbl.string("preferred_times");
+      tbl.string("img_url");
       tbl
         .integer("user_id")
         .unsigned()
@@ -69,6 +71,7 @@ exports.up = function (knex) {
       tbl.string("state", 128);
       tbl.string("country", 128);
       tbl.string("preferred_times");
+      tbl.string("img_url");
       tbl
         .integer("user_id")
         .unsigned()

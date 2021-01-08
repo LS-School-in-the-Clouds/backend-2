@@ -26,6 +26,7 @@
 | school_name     | string                | no       |
 | state           | string                | no       |
 | country         | string                | no       |
+| img_url         | string                | no       |
 | user_id *       | integer               | no       |
 
 * refers to users table
@@ -42,6 +43,7 @@
 | career          | string                | no       |
 | preferred_times | string                | no       |
 | timezone **     | integer (1-4)         | no       |
+| img_url         | integer               | no       |
 | user_id *       | integer               | no       |
 
 * refers to users table
@@ -59,6 +61,7 @@
 | career_goals    | string                | no       |
 | preferred_times | string                | no       |
 | timezone **     | integer (1-4)         | no       |
+| img_url         | integer               | no       |
 | user_id *       | integer               | no       |
 
 * refers to users table
@@ -134,12 +137,11 @@ student_id must refer to a user with role 1
 
 | Method | Endpoint           | Token Required | Description                   |
 | ------ | ------------------ | -------------- | ----------------------------- |
-| GET    | `/mentors`         | yes            | returns all mentors *         |
+| GET    | `/mentors`         | yes            | returns all mentors           |
 | GET    | `/mentors/:id`     | yes            | returns mentor by user id     |
 | POST   | `/mentors/`        | yes            | adds mentor to database       |
 | PUT    | `/mentors/:id`     | yes            | replaces mentor by id         |
 
-* client must have role of admin
 
 ### students routes
 
