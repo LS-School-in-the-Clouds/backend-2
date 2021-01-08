@@ -91,14 +91,14 @@ exports.up = function (knex) {
       tbl.string("date");
       tbl.boolean("completed").defaultTo("false");
       tbl
-        .integer("assinged_by")
+        .integer("assigned_by")
         .unsigned()
         .references("id")
         .inTable("users")
         .onDelete("CASCADE")
         .onUpdate("CASCADE");
       tbl
-        .integer("assinged_to")
+        .integer("assigned_to")
         .unsigned()
         .references("id")
         .inTable("users")
@@ -119,14 +119,14 @@ exports.up = function (knex) {
     .createTable("mentor_to_student", (tbl) => {
       tbl.increments();
       tbl
-        .integer("mentor")
+        .integer("mentor_id")
         .unsigned()
         .references("id")
         .inTable("users")
         .onDelete("CASCADE")
         .onUpdate("CASCADE");
       tbl
-        .integer("student")
+        .integer("student_id")
         .unsigned()
         .references("id")
         .inTable("users")
@@ -136,14 +136,14 @@ exports.up = function (knex) {
     .createTable("admin_to_mentor", (tbl) => {
       tbl.increments();
       tbl
-        .integer("mentor")
+        .integer("admin_id")
         .unsigned()
         .references("id")
         .inTable("users")
         .onDelete("CASCADE")
         .onUpdate("CASCADE");
       tbl
-        .integer("student")
+        .integer("mentor_id")
         .unsigned()
         .references("id")
         .inTable("users")

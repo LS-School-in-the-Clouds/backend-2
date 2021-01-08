@@ -10,7 +10,8 @@ const tasksRouter = require('./tasks/tasks-router')
 const mentorsRouter = require('./mentors/mentors-router')
 const adminsRouter = require('./admins/admins-router')
 const studentsRouter = require('./students/students-router');
-const connectionsRouter = require('./connections/connections-router');
+const mentorStudentRouter = require('./mentor-student/mentor-student-router')
+const adminMentorRouter = require('./admin-mentor/admin-mentor-router')
 
 const server = express();
 
@@ -24,7 +25,8 @@ server.use('/api/tasks', restricted, tasksRouter);
 server.use('/api/mentors', restricted, mentorsRouter);
 server.use('/api/admins', restricted, adminsRouter);
 server.use('/api/students', restricted, studentsRouter);
-server.use('/api/connections', restricted, connectionsRouter);
+server.use('/api/mentor-student', restricted, mentorStudentRouter);
+server.use('/api/admin-mentor', restricted, adminMentorRouter);
 
 server.get('/', (req, res) => {
   res.json({ api: 'up' });

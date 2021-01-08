@@ -7,7 +7,7 @@ const mid = require('./../middleware/users-middleware');
 
 // endpoints
 
-router.get("/", checkRole('admin'), (req, res) => {
+router.get("/", (req, res) => {
   Student.get()
     .then((students) => {
       res.status(200).json(students);
