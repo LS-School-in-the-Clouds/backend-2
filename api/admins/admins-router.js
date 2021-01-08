@@ -1,7 +1,5 @@
 const router = require('express').Router();
-const Task = require('./../tasks/tasks-model');
 const Admin = require('./admins-model');
-const User = require('./../users/users-model')
 const checkRole = require('../auth/check-role-middleware');
 const mid = require('./../middleware/users-middleware');
 
