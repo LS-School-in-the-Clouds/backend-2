@@ -152,6 +152,8 @@ student_id must refer to a user with role 1
 | POST   | `/students/`       | yes            | adds student to database      |
 | PUT    | `/students/:id`    | yes            | replaces student by id        |
 
+* client must have role of admin to return all students
+
 ### tasks routes
 
 | Method | Endpoint           | Token Required | Description                           |
@@ -169,7 +171,7 @@ student_id must refer to a user with role 1
 | GET    | `/mentor-student/:id/students` | yes            | returns all students by mentor id                         |
 | GET    | `/mentor-student/:id/mentors`  | yes            | returns mentor by student id                              |
 | POST   | `/mentor-student`              | yes            | adds new mentor_to_student dataset                        |
-| DELETE | `/mentor-student`              | yes            | removes mentor_to_student dataset by mentor_to_student id |
+| DELETE | `/mentor-student`              | yes            | removes mentor_to_student pair in dataset by mentor_to_student pair id |
 
 ### admin-mentor routes
 
@@ -178,4 +180,4 @@ student_id must refer to a user with role 1
 | GET    | `/admin-mentor/:id/mentors`  | yes            | returns all mentors by admin id                         |
 | GET    | `/admin-mentor/:id/admins`   | yes            | returns admin by mentor id                              |
 | POST   | `/admin-mentor`              | yes            | adds new admin_to_mentor dataset                        |
-| DELETE | `/admin-mentor`              | yes            | removes admin_to_mentor dataset by admin_to_mentor id   |
+| DELETE | `/admin-mentor`              | yes            | removes admin_to_mentor pair in dataset by admin_to_mentor pair id   |
