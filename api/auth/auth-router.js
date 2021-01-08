@@ -6,7 +6,16 @@ const { jwtSecret } = require('../../config/secrets')
 const Users = require("../users/users-model.js");
 const { isValid } = require("../users/users-service.js");
 
-router.post("/register", (req, res) => {
+// middleware
+const emailCheck = (req, res, next) => {
+  if(!req.body.email) {
+    res.status(400).json({ message: "Email is required" })
+  } else {
+    next();
+  }
+}
+
+router.post("/register", emailCheck, (req, res) => {
   const credentials = req.body;
 
   if (isValid(credentials)) {
@@ -27,7 +36,7 @@ router.post("/register", (req, res) => {
       });
   } else {
     res.status(400).json({
-      message: "please provide username and password and the password shoud be alphanumeric",
+      message: "Please provide username and password and the password shoud be alphanumeric",
     });
   }
 });
